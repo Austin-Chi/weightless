@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D99127A72F94ABC50058549E /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99127A62F94ABC50058549E /* MetalKit.framework */; };
+		D99127A92F94ABD10058549E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99127A82F94ABD10058549E /* AppKit.framework */; };
+		D99127AB2F94ABDB0058549E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99127AA2F94ABDB0058549E /* Metal.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		D99127992F94938E0058549E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		D991279B2F94938E0058549E /* Metal_Engine_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Metal_Engine_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
+		D99127A62F94ABC50058549E /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		D99127A82F94ABD10058549E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D99127AA2F94ABDB0058549E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99127AB2F94ABDB0058549E /* Metal.framework in Frameworks */,
+				D99127A92F94ABD10058549E /* AppKit.framework in Frameworks */,
+				D99127A72F94ABC50058549E /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D991279D2F94938E0058549E /* Metal_Engine_cpp */,
+				D99127A52F94ABC50058549E /* Frameworks */,
 				D991279C2F94938E0058549E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +68,16 @@
 				D991279B2F94938E0058549E /* Metal_Engine_cpp */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D99127A52F94ABC50058549E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D99127AA2F94ABDB0058549E /* Metal.framework */,
+				D99127A82F94ABD10058549E /* AppKit.framework */,
+				D99127A62F94ABC50058549E /* MetalKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +116,7 @@
 				TargetAttributes = {
 					D991279A2F94938E0058549E = {
 						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -135,7 +159,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -196,7 +220,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -244,20 +268,27 @@
 		D99127A32F94938E0058549E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4AT94V2T3;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "${PROJECT_DIR}/metal-cpp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		D99127A42F94938E0058549E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4AT94V2T3;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "${PROJECT_DIR}/metal-cpp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
