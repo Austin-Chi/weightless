@@ -2,24 +2,42 @@
 #include "../mesh_factory.h"
 #include "../../backend/mtlm.h"
 
-Battlefield::Battlefield(MTL::Device* device, NS::UInteger width, NS::UInteger height, NS::UInteger depth, Mesh* blockMesh)
+Battlefield::Battlefield(int width, int height, int depth)
 {
-    this->device = device->retain();
     this->width = width;
     this->height = height;
     this->depth = depth;
-    this->blockMesh = blockMesh;
     blockLayout = new bool[width * height * depth]();
     generateBattlefield();
 }
 
 Battlefield::~Battlefield()
 {
-    if (instanceBuffer) {
-        instanceBuffer->release();
-    }
     delete[] blockLayout;
-    device->release();
+}
+bool* Battlefield::getBlockLayout()
+{
+    return blockLayout;
+}
+
+int Battlefield::getLengthX()
+{
+    return width;
+}
+
+int Battlefield::getLengthY()
+{
+    return height;
+}
+
+int Battlefield::getLengthZ()
+{
+    return depth;
+}
+
+int Battlefield::getBlockCount()
+{
+    return blockCount;
 }
 
 void Battlefield::regenerate()
@@ -30,7 +48,7 @@ void Battlefield::regenerate()
 void Battlefield::generateBattlefield()
 {
     blockCount = 0;
-    for (NS::UInteger i = 0; i < width * height * depth; ++i) {
+    for (int i = 0; i < width * height * depth; ++i) {
         int x = i % width;
         int y = (i / width) % height;
         int z = i / (width * height);
@@ -40,27 +58,5 @@ void Battlefield::generateBattlefield()
             blockCount++;
         }
     }
-    
-    // if (instanceBuffer) {
-    //     instanceBuffer->release();
-    // }
-    
-    // simd::float4x4* instanceData = new simd::float4x4[blockCount];
-    // NS::UInteger index = 0;
-    // for (NS::UInteger z = 0; z < depth; ++z) {
-    //     for (NS::UInteger y = 0; y < height; ++y) {
-    //         for (NS::UInteger x = 0; x < width; ++x) {
-    //             if (blockLayout[x + y * width + z * width * height]) {
-    //                 instanceData[index++] = mtlm::translation({float(x), float(y), float(z)});
-    //             }
-    //         }
-    //     }
-    // }
-    
-    // NS::UInteger instanceBufferSize = blockCount * sizeof(simd::float4x4);
-    // instanceBuffer = device->newBuffer(instanceData, instanceBufferSize, MTL::ResourceStorageModeShared);
-    // memcpy(instanceBuffer->contents(), instanceData, instanceBufferSize);
-    // blockMesh->setInstanceBuffer(instanceBuffer);
-    // blockMesh->setInstanceCount(blockCount);
-    // delete[] instanceData;
+
 }

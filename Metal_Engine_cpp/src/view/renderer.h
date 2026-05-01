@@ -30,7 +30,7 @@ private:
     
     MTL::Buffer* triangleMesh;
     MTL::RenderPipelineState* trianglePipeline, *generalPipeline;
-    Mesh quadMesh, voxelMesh;
+    Mesh quadMesh, voxelMesh, battleFieldMesh;
     MTL::Texture* depthTexture;
     MTL::DepthStencilState* depthState;
     Battlefield* battlefield;

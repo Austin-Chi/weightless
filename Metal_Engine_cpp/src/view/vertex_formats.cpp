@@ -31,6 +31,13 @@ MTL::VertexDescriptor* Vertex::getDescriptor()
     return vertexDescriptor;
 }
 
+TexturedVertex::TexturedVertex()
+{
+    for (int i = 0; i < 8; ++i) {
+        this->data[i] = 0.0f;
+    }
+}
+
 TexturedVertex::TexturedVertex(float data[8])
 {
     for (int i = 0; i < 8; ++i) {

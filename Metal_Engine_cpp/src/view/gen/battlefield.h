@@ -4,15 +4,18 @@
 class Battlefield
 {
 public:
-    Battlefield(MTL::Device* device, NS::UInteger width, NS::UInteger height, NS::UInteger depth, Mesh* blockMesh); // width: x-axis, height: y-axis, depth: z-axis
+    Battlefield(int width, int height, int depth); // width: x-axis, height: y-axis, depth: z-axis
     ~Battlefield();
     void regenerate();
+    bool* getBlockLayout();
+    int getLengthX();
+    int getLengthY();
+    int getLengthZ();
+    int getBlockCount();
+
 private:
-    MTL::Device* device;
-    NS::UInteger width=32, height=32, depth=32;
-    NS::UInteger blockCount = 0;
+    int width=32, height=32, depth=32;
+    int blockCount = 0;
     bool* blockLayout = nullptr; //1 for occupied, 0 for empty
-    MTL::Buffer* instanceBuffer = nullptr;
-    Mesh* blockMesh = nullptr;
     void generateBattlefield();
 };

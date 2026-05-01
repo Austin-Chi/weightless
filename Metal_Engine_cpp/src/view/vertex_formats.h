@@ -16,6 +16,7 @@ class TexturedVertex
 {
 public:    
     TexturedVertex(float data[8]);
+    TexturedVertex();
 
     static MTL::VertexDescriptor* getDescriptor();
 private:
