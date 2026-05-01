@@ -1370,6 +1370,9 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/control/app.cpp.o: \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/../config.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/mesh_factory.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/mesh.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/gen/battlefield.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/gen/../../config.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../view/gen/../mesh_factory.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../model/camera.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../model/../config.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/control/../backend/glfw_adapter.h \

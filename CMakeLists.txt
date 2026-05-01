@@ -11,6 +11,7 @@ add_executable(Metal_Engine_cpp
     Metal_Engine_cpp/src/backend/mtlm.cpp
     Metal_Engine_cpp/src/control/app.cpp
     Metal_Engine_cpp/src/model/camera.cpp
+    Metal_Engine_cpp/src/view/gen/battlefield.cpp
     Metal_Engine_cpp/src/view/vertex_formats.cpp
     Metal_Engine_cpp/src/view/mesh.cpp
     Metal_Engine_cpp/src/view/image.cpp

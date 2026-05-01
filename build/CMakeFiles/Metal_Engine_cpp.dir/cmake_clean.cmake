@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/main.cpp.o.d"
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.o"
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.o.d"
+  "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o"
+  "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o.d"
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o"
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o.d"
   "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o"

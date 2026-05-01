@@ -8,6 +8,19 @@ void Mesh::setVertexBuffer(MTL::Buffer* vertexBuffer)
     this->vertexBuffer = vertexBuffer->retain();
 }
 
+void Mesh::setInstanceBuffer(MTL::Buffer* instanceBuffer)
+{
+    if (this->instanceBuffer) {
+        this->instanceBuffer->release();
+    }
+    this->instanceBuffer = instanceBuffer->retain();
+}
+
+void Mesh::setInstanceCount(NS::UInteger instanceCount)
+{
+    this->instanceCount = instanceCount;
+}
+
 void Mesh::setIndexCount(NS::UInteger indexCount)
 {
     this->indexCount = indexCount;
@@ -40,9 +53,10 @@ void Mesh::setSampler(MTL::SamplerState* sampler)
 void Mesh::draw(MTL::RenderCommandEncoder* encoder)
 {
     encoder->setVertexBuffer(vertexBuffer, 0, 0);
+    encoder->setVertexBuffer(instanceBuffer, 0, 1);
     encoder->setFragmentTexture(texture, 0);
     encoder->setFragmentSamplerState(sampler, 0);
-    encoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, indexCount, MTL::IndexType::IndexTypeUInt16, indexBuffer, NS::UInteger(0), NS::UInteger(1));
+    encoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, indexCount, MTL::IndexType::IndexTypeUInt16, indexBuffer, NS::UInteger(0), instanceCount);
 
 }
 

@@ -1,3 +1,0 @@
-/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build_cmake_test/CMakeFiles/Metal_Engine_cpp.dir
-/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build_cmake_test/CMakeFiles/edit_cache.dir
-/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build_cmake_test/CMakeFiles/rebuild_cache.dir

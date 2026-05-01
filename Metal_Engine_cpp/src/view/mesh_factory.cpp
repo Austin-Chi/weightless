@@ -170,8 +170,8 @@ Mesh MeshFactory::buildVoxel(MTL::Device* device, const char* textureFileName)
     MTL::SamplerDescriptor* samplerDescriptor = MTL::SamplerDescriptor::alloc()->init();
     samplerDescriptor->setMinFilter(MTL::SamplerMinMagFilter::SamplerMinMagFilterLinear);
     samplerDescriptor->setMagFilter(MTL::SamplerMinMagFilter::SamplerMinMagFilterLinear);
-    samplerDescriptor->setMipFilter(MTL::SamplerMipFilter::SamplerMipFilterNotMipmapped);
-    samplerDescriptor->setMaxAnisotropy(1);
+    samplerDescriptor->setMipFilter(MTL::SamplerMipFilter::SamplerMipFilterLinear);
+    samplerDescriptor->setMaxAnisotropy(4);
     samplerDescriptor->setSAddressMode(MTL::SamplerAddressMode::SamplerAddressModeRepeat);
     samplerDescriptor->setTAddressMode(MTL::SamplerAddressMode::SamplerAddressModeRepeat);
     samplerDescriptor->setRAddressMode(MTL::SamplerAddressMode::SamplerAddressModeRepeat);

@@ -1368,6 +1368,9 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/sstream \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh_factory.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/battlefield.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/../../config.h \
+  /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/../mesh_factory.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/pipeline_factory.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/../backend/mtlm.h \
   /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/vertex_formats.h

@@ -18,6 +18,7 @@ commandQueue(device->newCommandQueue()->retain())
     buildMeshes();
     buildShaders();
     buildDepthState();
+    buildBattlefield();
 }
 
 Renderer::~Renderer()
@@ -105,6 +106,11 @@ void Renderer::ensureDepthTexture(NS::UInteger width, NS::UInteger height)
     depthDescriptor->release();
 }
 
+void Renderer::buildBattlefield()
+{
+    battlefield = new Battlefield(device, 32, 32, 32, &voxelMesh);
+}
+
 void Renderer::update(const simd::float4x4& view)
 {
     t += 1.0f;
@@ -141,12 +147,14 @@ void Renderer::update(const simd::float4x4& view)
     
     encoder->setRenderPipelineState(generalPipeline);
     encoder->setDepthStencilState(depthState);
+    encoder->setCullMode(MTL::CullModeBack);
+    encoder->setFrontFacingWinding(MTL::Winding::WindingCounterClockwise);
 
     simd::float4x4 perspective = mtlm::perspective_projection(45.0f, 4.0f/3.0f, 0.1f, 100.0f);
-    encoder->setVertexBytes(&perspective, sizeof(simd::float4x4), 2);
-    encoder->setVertexBytes(&view, sizeof(simd::float4x4), 3);
+    encoder->setVertexBytes(&perspective, sizeof(simd::float4x4), 3);
+    encoder->setVertexBytes(&view, sizeof(simd::float4x4), 4);
     simd::float4x4 transform = mtlm::translation({0.0f, 0.0f, 2.0f});
-    encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 1);
+    encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 2);
     quadMesh.draw(encoder);
     voxelMesh.draw(encoder);
     

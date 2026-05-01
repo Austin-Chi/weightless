@@ -233,6 +233,30 @@ Metal_Engine_cpp/src/model/camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Metal_Engine_cpp.dir/build.make CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.s
 .PHONY : Metal_Engine_cpp/src/model/camera.cpp.s
 
+Metal_Engine_cpp/src/view/gen/battlefield.o: Metal_Engine_cpp/src/view/gen/battlefield.cpp.o
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.o
+
+# target to build an object file
+Metal_Engine_cpp/src/view/gen/battlefield.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Metal_Engine_cpp.dir/build.make CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.cpp.o
+
+Metal_Engine_cpp/src/view/gen/battlefield.i: Metal_Engine_cpp/src/view/gen/battlefield.cpp.i
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.i
+
+# target to preprocess a source file
+Metal_Engine_cpp/src/view/gen/battlefield.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Metal_Engine_cpp.dir/build.make CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.i
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.cpp.i
+
+Metal_Engine_cpp/src/view/gen/battlefield.s: Metal_Engine_cpp/src/view/gen/battlefield.cpp.s
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.s
+
+# target to generate assembly for a file
+Metal_Engine_cpp/src/view/gen/battlefield.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Metal_Engine_cpp.dir/build.make CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.s
+.PHONY : Metal_Engine_cpp/src/view/gen/battlefield.cpp.s
+
 Metal_Engine_cpp/src/view/image.o: Metal_Engine_cpp/src/view/image.cpp.o
 .PHONY : Metal_Engine_cpp/src/view/image.o
 
@@ -399,6 +423,9 @@ help:
 	@echo "... Metal_Engine_cpp/src/model/camera.o"
 	@echo "... Metal_Engine_cpp/src/model/camera.i"
 	@echo "... Metal_Engine_cpp/src/model/camera.s"
+	@echo "... Metal_Engine_cpp/src/view/gen/battlefield.o"
+	@echo "... Metal_Engine_cpp/src/view/gen/battlefield.i"
+	@echo "... Metal_Engine_cpp/src/view/gen/battlefield.s"
 	@echo "... Metal_Engine_cpp/src/view/image.o"
 	@echo "... Metal_Engine_cpp/src/view/image.i"
 	@echo "... Metal_Engine_cpp/src/view/image.s"

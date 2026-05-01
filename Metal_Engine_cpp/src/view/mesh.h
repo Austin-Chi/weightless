@@ -5,6 +5,8 @@ class Mesh
 {
 public:
     void setVertexBuffer(MTL::Buffer* vertexBuffer);
+    void setInstanceBuffer(MTL::Buffer* instanceBuffer);
+    void setInstanceCount(NS::UInteger instanceCount);
     void setIndexCount(NS::UInteger indexCount);
     void setIndexBuffer(MTL::Buffer* indexBuffer);
     void setTexture(MTL::Texture* texture);
@@ -13,8 +15,9 @@ public:
     void release();
 
 private:
-    MTL::Buffer* vertexBuffer = nullptr, *indexBuffer = nullptr;
+    MTL::Buffer* vertexBuffer = nullptr, *indexBuffer = nullptr, *instanceBuffer = nullptr;
     MTL::Texture* texture = nullptr;
     MTL::SamplerState* sampler = nullptr;
     NS::UInteger indexCount = 0;
+    NS::UInteger instanceCount = 1;
 };

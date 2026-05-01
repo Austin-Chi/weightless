@@ -8,6 +8,7 @@
 #pragma once
 #include "../config.h"
 #include "mesh_factory.h"
+#include "gen/battlefield.h"
 
 class Renderer
 {
@@ -21,6 +22,7 @@ private:
     void buildShaders();
     void buildDepthState();
     void ensureDepthTexture(NS::UInteger width, NS::UInteger height);
+    void buildBattlefield();
     MTL::Device* device;
     CA::MetalLayer* metalLayer;
     CA::MetalDrawable* drawableArea;
@@ -31,5 +33,6 @@ private:
     Mesh quadMesh, voxelMesh;
     MTL::Texture* depthTexture;
     MTL::DepthStencilState* depthState;
+    Battlefield* battlefield;
     float t = 0.0f;
 };

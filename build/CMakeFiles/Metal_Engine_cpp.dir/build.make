@@ -139,10 +139,24 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/model/camera.cpp -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.s
 
+CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
+CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/battlefield.cpp
+CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/battlefield.cpp
+
+CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/battlefield.cpp > CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.i
+
+CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/gen/battlefield.cpp -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.s
+
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/vertex_formats.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/vertex_formats.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.s: 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.s: cmake_forc
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/image.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/image.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.s: cmake_for
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh_factory.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/mesh_factory.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh_factory.cpp.s: cm
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/pipeline_factory.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/pipeline_factory.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/pipeline_factory.cpp.s
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/flags.make
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o: /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/renderer.cpp
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o: CMakeFiles/Metal_Engine_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o -MF CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o.d -o CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.o -c /Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/Metal_Engine_cpp/src/view/renderer.cpp
 
 CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/renderer.cpp.i: cmake_force
@@ -230,6 +244,7 @@ Metal_Engine_cpp_OBJECTS = \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/backend/mtlm.cpp.o" \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/control/app.cpp.o" \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.o" \
+"CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o" \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o" \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o" \
 "CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o" \
@@ -245,6 +260,7 @@ Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/backend/g
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/backend/mtlm.cpp.o
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/control/app.cpp.o
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/model/camera.cpp.o
+Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/gen/battlefield.cpp.o
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/vertex_formats.cpp.o
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/mesh.cpp.o
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/image.cpp.o
@@ -254,7 +270,7 @@ Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/Metal_Engine_cpp/src/view/rend
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/build.make
 Metal_Engine_cpp: /opt/homebrew/lib/libglfw.3.3.dylib
 Metal_Engine_cpp: CMakeFiles/Metal_Engine_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable Metal_Engine_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/austin/Desktop/Mac_Apps_Dev/Metal_Engine_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable Metal_Engine_cpp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Metal_Engine_cpp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
