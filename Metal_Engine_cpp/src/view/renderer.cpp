@@ -10,13 +10,13 @@
 #include "../backend/mtlm.h"
 #include "vertex_formats.h"
 
-Renderer::Renderer(MTL::Device* device, CA::MetalLayer* metalLayer):
+Renderer::Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield):
 device(device->retain()),
 metalLayer(metalLayer->retain()),
-commandQueue(device->newCommandQueue()->retain())
+commandQueue(device->newCommandQueue()->retain()),
+battlefield(battlefield)
 {
 
-    buildBattlefield();
     buildMeshes();
     buildShaders();
     buildDepthState();
@@ -106,11 +106,6 @@ void Renderer::ensureDepthTexture(NS::UInteger width, NS::UInteger height)
     depthDescriptor->setUsage(MTL::TextureUsageRenderTarget);
     depthTexture = device->newTexture(depthDescriptor);
     depthDescriptor->release();
-}
-
-void Renderer::buildBattlefield()
-{
-    battlefield = new Battlefield(32, 32, 32);
 }
 
 void Renderer::update(const simd::float4x4& view)

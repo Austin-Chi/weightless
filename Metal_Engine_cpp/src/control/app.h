@@ -8,6 +8,7 @@
 #include "../config.h"
 #include "../view/renderer.h"
 #include "../model/camera.h"
+#include "../view/gen/battlefield.h"
 
 class App
 {
@@ -23,4 +24,5 @@ private:
     NS::Window* window;
     Renderer* renderer;
     Camera* camera;
+    Battlefield* battlefield;
 };

@@ -24,11 +24,13 @@ App::App()
     
     window = get_ns_window(glfwWindow, metalLayer)->retain();
     
-    renderer = new Renderer(device, metalLayer);
+    battlefield = new Battlefield(32, 32, 32);
+    int* positions = battlefield->getCharacterStartPositions();
+    renderer = new Renderer(device, metalLayer, battlefield);
 
     camera = new Camera();
-    camera->setPosition({-10.0f, 0.0f, 5.0f});
-    camera->setAngles(0.0f, 0.0f);
+    camera->setPosition({float(positions[0]), float(positions[1]), float(positions[2])});
+    camera->setAngles(0.0f, 180.0f);
 }
 
 App::~App()
@@ -36,6 +38,7 @@ App::~App()
     window->release();
     delete renderer;
     delete camera;
+    delete battlefield;
     glfwTerminate();
 }
 
@@ -62,6 +65,14 @@ void App::run()
 
         if (glfwGetKey(glfwWindow, GLFW_KEY_D) == GLFW_PRESS) {
             movement[1] += 0.1f;
+        }
+
+        if (glfwGetKey(glfwWindow, GLFW_KEY_Q) == GLFW_PRESS) {
+            movement[2] -= 0.1f;
+        }
+
+        if (glfwGetKey(glfwWindow, GLFW_KEY_E) == GLFW_PRESS) {
+            movement[2] += 0.1f;
         }
 
         if (glfwGetKey(glfwWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {

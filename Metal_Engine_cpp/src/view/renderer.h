@@ -13,7 +13,7 @@
 class Renderer
 {
 public:
-    Renderer(MTL::Device* device, CA::MetalLayer* metalLayer);
+    Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield);
     ~Renderer();
     void update(const simd::float4x4& view);
     
@@ -22,7 +22,6 @@ private:
     void buildShaders();
     void buildDepthState();
     void ensureDepthTexture(NS::UInteger width, NS::UInteger height);
-    void buildBattlefield();
     MTL::Device* device;
     CA::MetalLayer* metalLayer;
     CA::MetalDrawable* drawableArea;

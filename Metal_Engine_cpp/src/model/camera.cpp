@@ -16,7 +16,7 @@ void Camera::setAngles(float pitch, float yaw)
 void Camera::walk(simd::float3 dPos)
 {
     simd::float3 movement = right * dPos[1] + up * dPos[2] + forwards * dPos[0];
-    movement[2] = 0.0f;
+    // movement[2] = 0.0f;
     position += movement;
 }
 

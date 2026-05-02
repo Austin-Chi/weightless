@@ -184,7 +184,7 @@ Mesh MeshFactory::buildVoxel(MTL::Device* device, const char* textureFileName)
 }
 
 
-Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFileName, bool* voxelLayout, int lengthX, int lengthY, int lengthZ, int blockCount)
+Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFileName, int* voxelLayout, int lengthX, int lengthY, int lengthZ, int blockCount)
 {
     Mesh mesh;
 
@@ -195,12 +195,12 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
             for(int x = 0; x < lengthX; x++) {
                 if(voxelLayout[x + y * lengthX + z * lengthX * lengthY]) {
                     // check neighbors to determine visible faces
-                    if(z == 0 || !voxelLayout[x + y * lengthX + (z - 1) * lengthX * lengthY]) visibleFaceCount++; // -z face
-                    if(z == lengthZ - 1 || !voxelLayout[x + y * lengthX + (z + 1) * lengthX * lengthY]) visibleFaceCount++; // +z face
-                    if(x == lengthX - 1 || !voxelLayout[(x + 1) + y * lengthX + z * lengthX * lengthY]) visibleFaceCount++; // +x face
-                    if(x == 0 || !voxelLayout[(x - 1) + y * lengthX + z * lengthX * lengthY]) visibleFaceCount++; // -x face
-                    if(y == lengthY - 1 || !voxelLayout[x + (y + 1) * lengthX + z * lengthX * lengthY]) visibleFaceCount++; // +y face
-                    if(y == 0 || !voxelLayout[x + (y - 1) * lengthX + z * lengthX * lengthY]) visibleFaceCount++; // -y face
+                    if(z == 0 || voxelLayout[x + y * lengthX + (z - 1) * lengthX * lengthY] == 0) visibleFaceCount++; // -z face
+                    if(z == lengthZ - 1 || voxelLayout[x + y * lengthX + (z + 1) * lengthX * lengthY] == 0) visibleFaceCount++; // +z face
+                    if(x == lengthX - 1 || voxelLayout[(x + 1) + y * lengthX + z * lengthX * lengthY] == 0) visibleFaceCount++; // +x face
+                    if(x == 0 || voxelLayout[(x - 1) + y * lengthX + z * lengthX * lengthY] == 0) visibleFaceCount++; // -x face
+                    if(y == lengthY - 1 || voxelLayout[x + (y + 1) * lengthX + z * lengthX * lengthY] == 0) visibleFaceCount++; // +y face
+                    if(y == 0 || voxelLayout[x + (y - 1) * lengthX + z * lengthX * lengthY] == 0) visibleFaceCount++; // -y face
                 }
             }
         }
@@ -221,7 +221,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                 if (voxelLayout[x + y * lengthX + z * lengthX * lengthY]) {
 
                     // -z face
-                    if (z == 0 || !voxelLayout[x + y * lengthX + (z - 1) * lengthX * lengthY]) {
+                    if (z == 0 || voxelLayout[x + y * lengthX + (z - 1) * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -z face
                         visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)y, (float)z, 1.0, 0.0, 0.0, 0.0, 0.0});
@@ -238,7 +238,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                         currentFace++;
                     }
                     // +z face
-                    if (z == lengthZ - 1 || !voxelLayout[x + y * lengthX + (z + 1) * lengthX * lengthY]) {
+                    if (z == lengthZ - 1 || voxelLayout[x + y * lengthX + (z + 1) * lengthX * lengthY] == 0) {
 
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +z face
@@ -256,7 +256,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                         currentFace++;
                     }
                     // -y face
-                    if (y == 0 || !voxelLayout[x + (y - 1) * lengthX + z * lengthX * lengthY]) {
+                    if (y == 0 || voxelLayout[x + (y - 1) * lengthX + z * lengthX * lengthY] == 0) {
 
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -y face
@@ -274,7 +274,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                         currentFace++;
                     }
                     // +y face
-                    if (y == lengthY - 1 || !voxelLayout[x + (y + 1) * lengthX + z * lengthX * lengthY]) {
+                    if (y == lengthY - 1 || voxelLayout[x + (y + 1) * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +y face
                         visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
@@ -291,7 +291,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                         currentFace++;
                     }
                     // -x face
-                    if (x == 0 || !voxelLayout[x - 1 + y * lengthX + z * lengthX * lengthY]) {
+                    if (x == 0 || voxelLayout[x - 1 + y * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -x face
                         visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
@@ -308,7 +308,7 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                         currentFace++;
                     }
                     // +x face
-                    if (x == lengthX - 1 || !voxelLayout[x + 1 + y * lengthX + z * lengthX * lengthY]) {
+                    if (x == lengthX - 1 || voxelLayout[x + 1 + y * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +x face
                         visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});

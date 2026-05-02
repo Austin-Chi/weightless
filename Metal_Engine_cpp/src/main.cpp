@@ -14,6 +14,7 @@
 #include "control/app.h"
 
 int main(int argc, const char * argv[]) {
+    srand( time(NULL) );
     NS::AutoreleasePool* autoreleasePool = NS::AutoreleasePool::alloc()->init();
        
     App* app = new App;
