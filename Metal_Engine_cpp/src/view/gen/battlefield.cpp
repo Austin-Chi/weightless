@@ -89,15 +89,19 @@ void Battlefield::generateBattlefield()
     while (blockLayout[characterStartPositions[0] + characterStartPositions[1] * width + characterStartPositions[2] * width * height] == 0) {
         characterStartPositions[0]++;
     }
+    characterStartPositions[0]--;
     while (blockLayout[characterStartPositions[3] + characterStartPositions[4] * width + characterStartPositions[5] * width * height] == 0) {
         characterStartPositions[3]--;
     }
+    characterStartPositions[3]++;
     while (blockLayout[characterStartPositions[0] + characterStartPositions[1] * width + characterStartPositions[2] * width * height] == 0) {
         characterStartPositions[1]++;
     }
+    characterStartPositions[1]--;
     while (blockLayout[characterStartPositions[3] + characterStartPositions[4] * width + characterStartPositions[5] * width * height] == 0) {
         characterStartPositions[4]--;
     }
+    characterStartPositions[4]++;
 
 }
 

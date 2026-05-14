@@ -14,4 +14,6 @@ namespace MeshFactory {
     Mesh buildQuad(MTL::Device* device, const char* textureFileName);
     Mesh buildVoxel(MTL::Device* device, const char* textureFileName);
     Mesh buildVoxelChunkMesh(MTL::Device* device, const char* textureFileName, int* voxelLayout, int lengthX, int lengthY, int lengthZ, int blockCount);
+    Mesh buildMeshFromOBJ(MTL::Device* device, const char* objFilePath);
+    Mesh buildMeshFromOBJWithTexture(MTL::Device* device, const char* objFilePath, const char* textureFileName);
 }

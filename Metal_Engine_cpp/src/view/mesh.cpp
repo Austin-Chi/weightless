@@ -26,6 +26,11 @@ void Mesh::setIndexCount(NS::UInteger indexCount)
     this->indexCount = indexCount;
 }
 
+void Mesh::setIndexType(MTL::IndexType indexType)
+{
+    this->indexType = indexType;
+}
+
 void Mesh::setIndexBuffer(MTL::Buffer* indexBuffer)
 {
     if (this->indexBuffer) {
@@ -56,7 +61,7 @@ void Mesh::draw(MTL::RenderCommandEncoder* encoder)
     encoder->setVertexBuffer(instanceBuffer, 0, 1);
     encoder->setFragmentTexture(texture, 0);
     encoder->setFragmentSamplerState(sampler, 0);
-    encoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, indexCount, MTL::IndexType::IndexTypeUInt16, indexBuffer, NS::UInteger(0), instanceCount);
+    encoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, indexCount, indexType, indexBuffer, NS::UInteger(0), instanceCount);
 
 }
 

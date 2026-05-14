@@ -8,6 +8,7 @@ public:
     void setInstanceBuffer(MTL::Buffer* instanceBuffer);
     void setInstanceCount(NS::UInteger instanceCount);
     void setIndexCount(NS::UInteger indexCount);
+    void setIndexType(MTL::IndexType indexType);
     void setIndexBuffer(MTL::Buffer* indexBuffer);
     void setTexture(MTL::Texture* texture);
     void setSampler(MTL::SamplerState* sampler);
@@ -20,4 +21,5 @@ private:
     MTL::SamplerState* sampler = nullptr;
     NS::UInteger indexCount = 0;
     NS::UInteger instanceCount = 1;
+    MTL::IndexType indexType = MTL::IndexType::IndexTypeUInt16;
 };

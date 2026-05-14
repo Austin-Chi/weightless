@@ -26,6 +26,7 @@ Renderer::~Renderer()
 {
     quadMesh.release();
     voxelMesh.release();
+    objMesh.release();
     triangleMesh->release();
     if (trianglePipeline) {
         trianglePipeline->release();
@@ -49,6 +50,10 @@ void Renderer::buildMeshes()
     quadMesh = MeshFactory::buildQuad(device, "Metal_Engine_cpp/assets/checkerBoard.jpg");
     voxelMesh = MeshFactory::buildVoxel(device, "Metal_Engine_cpp/assets/checkerBoard.jpg");
     battleFieldMesh = MeshFactory::buildVoxelChunkMesh(device, "Metal_Engine_cpp/assets/checkerBoard.jpg", battlefield->getBlockLayout(), battlefield->getLengthX(), battlefield->getLengthY(), battlefield->getLengthZ(), battlefield->getBlockCount());
+    
+    // Load OBJ mesh
+    objMesh = MeshFactory::buildMeshFromOBJ(device, "Metal_Engine_cpp/assets/mesh/cube.obj");
+    std::cout << "Renderer debug: OBJ mesh loaded and queued for drawing" << std::endl;
 }
 
 void Renderer::buildShaders()
@@ -152,9 +157,12 @@ void Renderer::update(const simd::float4x4& view)
     encoder->setVertexBytes(&view, sizeof(simd::float4x4), 4);
     simd::float4x4 transform = mtlm::translation({0.0f, 0.0f, 2.0f});
     encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 2);
-    quadMesh.draw(encoder);
-    voxelMesh.draw(encoder);
+    // quadMesh.draw(encoder);
+    // voxelMesh.draw(encoder);
     battleFieldMesh.draw(encoder);
+    
+    // Draw OBJ mesh
+    objMesh.draw(encoder);
     
     transform = mtlm::translation({0.5f, 0.5f, 2.0f}) * mtlm::z_rotation(t) * mtlm::scale(0.1f);
     encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 1);
