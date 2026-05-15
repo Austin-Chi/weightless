@@ -32,10 +32,10 @@ Mesh MeshFactory::buildQuad(MTL::Device* device, const char* textureFileName)
     Mesh mesh;
     
     TexturedVertex vertices[4] = {
-        {(float[8]){-0.75, -0.75, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 0.75, -0.75, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 0.75,  0.75, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){-0.75,  0.75, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0}}
+        {(float[11]){-0.75, -0.75, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.75, -0.75, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.75,  0.75, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){-0.75,  0.75, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0}}
     };
     NS::UInteger vertexBufferSize = 4 * sizeof(TexturedVertex);
     
@@ -197,7 +197,7 @@ Mesh MeshFactory::buildMeshFromOBJWithTexture(MTL::Device* device, const char* o
         simd::float3 pos = (fv.positionIndex>=0 && fv.positionIndex < (int)positions.size()) ? positions[fv.positionIndex] : simd::make_float3(0,0,0);
         simd::float3 normal = (fv.normalIndex>=0 && fv.normalIndex < (int)normals.size()) ? normals[fv.normalIndex] : simd::make_float3(0,0,1);
         simd::float2 tex = (fv.texCoordIndex>=0 && fv.texCoordIndex < (int)texCoords.size()) ? texCoords[fv.texCoordIndex] : simd::make_float2(0,0);
-        float data[8] = { pos[0], pos[1], pos[2], 1.0f,1.0f,1.0f, tex[0], tex[1] };
+        float data[11] = { pos[0], pos[1], pos[2], 1.0f,1.0f,1.0f, tex[0], tex[1], normal[0], normal[1], normal[2] };
         verticesOut.push_back(TexturedVertex(data));
         indicesOut.push_back((uint32_t)i);
     }
@@ -274,35 +274,35 @@ Mesh MeshFactory::buildVoxel(MTL::Device* device, const char* textureFileName)
     
     TexturedVertex vertices[24] = { //each face has 4 vertices, and each vertex has 8 floats (pos(3), color(3), texCoord(2))
         //face -z
-        {(float[8]){ 0.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 0.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 1.0, 1.0, -2.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 1.0, 0.0, -2.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0}},
+        {(float[11]){ 0.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0}},
+        {(float[11]){ 1.0, 1.0, -2.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, -1.0}},
+        {(float[11]){ 1.0, 0.0, -2.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0}},
         //face +z
-        {(float[8]){ 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 1.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 0.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 1.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
         //face +x
-        {(float[8]){ 1.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 1.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 1.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 1.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0}},
+        {(float[11]){ 1.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0}},
+        {(float[11]){ 1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0}},
+        {(float[11]){ 1.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0}},
         //face -x
-        {(float[8]){ 0.0, 1.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 0.0, 0.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 0.0, 0.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 0.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 0.0, 1.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0}},
+        {(float[11]){ 0.0, 0.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0}},
+        {(float[11]){ 0.0, 0.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0, -1.0, 0.0, 0.0}},
+        {(float[11]){ 0.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0}},
         //face +y
-        {(float[8]){ 1.0, 1.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 0.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 0.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 1.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0}},
+        {(float[11]){ 1.0, 1.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0}},
+        {(float[11]){ 0.0, 1.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0}},
+        {(float[11]){ 0.0, 1.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0}},
+        {(float[11]){ 1.0, 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
         //face -y
-        {(float[8]){ 0.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0}},
-        {(float[8]){ 1.0, 0.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0}},
-        {(float[8]){ 1.0, 0.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0}},
-        {(float[8]){ 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0}}
+        {(float[11]){ 0.0, 0.0, -2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0}},
+        {(float[11]){ 1.0, 0.0, -2.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0}},
+        {(float[11]){ 1.0, 0.0, -1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, -1.0, 0.0}},
+        {(float[11]){ 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0}}
     };
     NS::UInteger vertexBufferSize = 24 * sizeof(TexturedVertex);
     
@@ -407,10 +407,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                     if (z == 0 || voxelLayout[x + y * lengthX + (z - 1) * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -z face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)y, (float)z, 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)z, 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)x, (float)y, (float)z, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, -1.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, -1.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)z, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;
@@ -425,10 +425,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
 
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +z face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)x, (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)(z + 1), 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)x, (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)(z + 1), 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;
@@ -443,10 +443,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
 
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -y face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)y, (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)x, (float)y, (float)z, 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)z, 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)x, (float)y, (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)x, (float)y, (float)z, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)z, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, -1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;
@@ -460,10 +460,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                     if (y == lengthY - 1 || voxelLayout[x + (y + 1) * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +y face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;
@@ -477,10 +477,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                     if (x == 0 || voxelLayout[x - 1 + y * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for -x face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)x, (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)x, (float)y, (float)z, 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)x, (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)x, (float)(y + 1), (float)z, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)x, (float)y, (float)z, 0.0, 0.0, 1.0, 1.0, 1.0, -1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)x, (float)y, (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;
@@ -494,10 +494,10 @@ Mesh MeshFactory::buildVoxelChunkMesh(MTL::Device* device, const char* textureFi
                     if (x == lengthX - 1 || voxelLayout[x + 1 + y * lengthX + z * lengthX * lengthY] == 0) {
                         int vertexStartIndex = currentFace * 4;
                         // add vertices and indices for +x face
-                        visibleVertices[vertexStartIndex] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0});
-                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[8]){(float)(x + 1), (float)y, (float)z, 0.0, 1.0, 0.0, 1.0, 0.0});
-                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0});
-                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[8]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0});
+                        visibleVertices[vertexStartIndex] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)(z + 1), 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 1] = TexturedVertex((float[11]){(float)(x + 1), (float)y, (float)z, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 2] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)z, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0});
+                        visibleVertices[vertexStartIndex + 3] = TexturedVertex((float[11]){(float)(x + 1), (float)(y + 1), (float)(z + 1), 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0});
                         int indexStartIndex = currentFace * 6;
                         visibleIndices[indexStartIndex] = vertexStartIndex;
                         visibleIndices[indexStartIndex + 1] = vertexStartIndex + 1;

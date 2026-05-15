@@ -20,6 +20,7 @@ battlefield(battlefield)
     buildMeshes();
     buildShaders();
     buildDepthState();
+    buildLights();
 }
 
 Renderer::~Renderer()
@@ -28,6 +29,7 @@ Renderer::~Renderer()
     voxelMesh.release();
     objMesh.release();
     triangleMesh->release();
+    lightsBuffer->release();
     if (trianglePipeline) {
         trianglePipeline->release();
     }
@@ -111,6 +113,25 @@ void Renderer::ensureDepthTexture(NS::UInteger width, NS::UInteger height)
     depthDescriptor->setUsage(MTL::TextureUsageRenderTarget);
     depthTexture = device->newTexture(depthDescriptor);
     depthDescriptor->release();
+}
+
+void Renderer::buildLights()
+{
+    NS::UInteger lightCount = 1;
+    simd::float4 positionRadii[1] = {{0.0f, 0.0f, 0.0f, 10.0f}};
+    simd::float4 colorIntensities[1] = {{1.0f, 1.0f, 1.0f, 1.0f}};
+
+    lightsBuffer = LightFactory::buildLights(device, positionRadii, colorIntensities, lightCount);
+
+    //Bind light buffer to mesh
+    quadMesh.setLightBuffer(lightsBuffer);
+    quadMesh.setLightCount(lightCount);
+    voxelMesh.setLightBuffer(lightsBuffer);
+    voxelMesh.setLightCount(lightCount);
+    battleFieldMesh.setLightBuffer(lightsBuffer);
+    battleFieldMesh.setLightCount(lightCount);
+    objMesh.setLightBuffer(lightsBuffer);
+    objMesh.setLightCount(lightCount);
 }
 
 void Renderer::update(const simd::float4x4& view)

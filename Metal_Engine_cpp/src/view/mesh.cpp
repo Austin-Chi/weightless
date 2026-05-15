@@ -8,6 +8,19 @@ void Mesh::setVertexBuffer(MTL::Buffer* vertexBuffer)
     this->vertexBuffer = vertexBuffer->retain();
 }
 
+void Mesh::setLightBuffer(MTL::Buffer* lightBuffer)
+{
+    if (this->lightBuffer) {
+        this->lightBuffer->release();
+    }
+    this->lightBuffer = lightBuffer->retain();
+}
+
+void Mesh::setLightCount(NS::UInteger lightCount)
+{
+    this->lightCount = lightCount;
+}
+
 void Mesh::setInstanceBuffer(MTL::Buffer* instanceBuffer)
 {
     if (this->instanceBuffer) {
@@ -59,6 +72,8 @@ void Mesh::draw(MTL::RenderCommandEncoder* encoder)
 {
     encoder->setVertexBuffer(vertexBuffer, 0, 0);
     encoder->setVertexBuffer(instanceBuffer, 0, 1);
+    encoder->setFragmentBuffer(lightBuffer, 0, 0);
+    encoder->setFragmentBytes(&lightCount, sizeof(NS::UInteger), 1);
     encoder->setFragmentTexture(texture, 0);
     encoder->setFragmentSamplerState(sampler, 0);
     encoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, indexCount, indexType, indexBuffer, NS::UInteger(0), instanceCount);
@@ -70,6 +85,14 @@ void Mesh::release()
     if (vertexBuffer) {
         vertexBuffer->release();
         vertexBuffer = nullptr;
+    }
+    if (instanceBuffer) {
+        instanceBuffer->release();
+        instanceBuffer = nullptr;
+    }
+    if (lightBuffer) {
+        lightBuffer->release();
+        lightBuffer = nullptr;
     }
     if (indexBuffer) {
         indexBuffer->release();

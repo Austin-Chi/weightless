@@ -33,14 +33,15 @@ MTL::VertexDescriptor* Vertex::getDescriptor()
 
 TexturedVertex::TexturedVertex()
 {
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 11; ++i) {
         this->data[i] = 0.0f;
     }
 }
 
-TexturedVertex::TexturedVertex(float data[8])
+
+TexturedVertex::TexturedVertex(float data[11])
 {
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 11; ++i) {
         this->data[i] = data[i];
     }
 }
@@ -68,6 +69,12 @@ MTL::VertexDescriptor* TexturedVertex::getDescriptor()
     texCoordDescriptor->setOffset(offset);
     texCoordDescriptor->setBufferIndex(0);
     offset += 2 * sizeof(float);
+    //attribute 3: normal (vec3)
+    auto normalDescriptor = attributes->object(3);
+    normalDescriptor->setFormat(MTL::VertexFormat::VertexFormatFloat3);
+    normalDescriptor->setOffset(offset);
+    normalDescriptor->setBufferIndex(0);
+    offset += 3 * sizeof(float);
 
     auto layoutDescriptor = vertexDescriptor->layouts()->object(0);
     layoutDescriptor->setStride(offset);

@@ -15,10 +15,10 @@ private:
 class TexturedVertex
 {
 public:    
-    TexturedVertex(float data[8]);
+    TexturedVertex(float data[11]); // pos(3), color(3), texCoord(2), normal(3)
     TexturedVertex();
 
     static MTL::VertexDescriptor* getDescriptor();
 private:
-    float data[8];
+    float data[11];
 };
