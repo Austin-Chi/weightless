@@ -1,5 +1,10 @@
 #include "camera.h"
 #include "../backend/mtlm.h"
+#include "../view/gen/battlefield.h"
+#include <algorithm>
+#include <cmath>
+
+class Battlefield;
 
 void Camera::setPosition(simd::float3 pos)
 {
@@ -47,6 +52,63 @@ void Camera::spin(float dPitch, float dYaw)
     rotation = quatMultiply(yawQuat, rotation);
     
     updateVectors();
+}
+
+bool Camera::isOccupied(simd::float3 point, Battlefield* battlefield)
+{
+    if (!battlefield) {
+        return false;
+    }
+
+    int x = static_cast<int>(std::floor(point[0]));
+    int y = static_cast<int>(std::floor(point[1]));
+    int z = static_cast<int>(std::floor(point[2]));
+
+    if (x < 0 || y < 0 || z < 0 ||
+        x >= battlefield->getLengthX() ||
+        y >= battlefield->getLengthY() ||
+        z >= battlefield->getLengthZ()) {
+        return true;
+    }
+
+    int index = x + y * battlefield->getLengthX() + z * battlefield->getLengthX() * battlefield->getLengthY();
+    return battlefield->getBlockLayout()[index] != 0;
+}
+
+void Camera::followCharacter(simd::float3 characterPosition, simd::float3 characterUp, Battlefield* battlefield)
+{
+    simd::float3 battlefieldCenter = {
+        static_cast<float>(battlefield->getLengthX()) * 0.5f,
+        static_cast<float>(battlefield->getLengthY()) * 0.5f,
+        static_cast<float>(battlefield->getLengthZ()) * 0.5f
+    };
+
+    simd::float3 followDirection = battlefieldCenter - characterPosition;
+    float followDirectionLength = simd::length(followDirection);
+    if (followDirectionLength > 0.0001f) {
+        followDirection /= followDirectionLength;
+    } else {
+        followDirection = simd::normalize(characterUp);
+    }
+
+    auto isPathClear = [&](float distance) {
+        const float sampleStep = 0.1f;
+
+        for (float travel = sampleStep; travel <= distance; travel += sampleStep) {
+            if (isOccupied(characterPosition + followDirection * travel, battlefield)) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+
+    float distance = followDistance;
+    while (distance > minimumFollowDistance && !isPathClear(distance)) {
+        distance = std::max(minimumFollowDistance, distance - followShrinkStep);
+    }
+
+    position = characterPosition + followDirection * distance;
 }
 
 simd::float4x4 Camera::getViewTransform()

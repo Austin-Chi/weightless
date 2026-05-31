@@ -10,17 +10,19 @@
 #include "../backend/mtlm.h"
 #include "vertex_formats.h"
 
-Renderer::Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield):
+Renderer::Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield, Character* character):
 device(device->retain()),
 metalLayer(metalLayer->retain()),
 commandQueue(device->newCommandQueue()->retain()),
-battlefield(battlefield)
+battlefield(battlefield),
+character(character)
 {
 
     buildMeshes();
     buildShaders();
     buildDepthState();
     buildLights();
+    character->setMesh(&objMesh);
 }
 
 Renderer::~Renderer()
@@ -182,8 +184,8 @@ void Renderer::update(const simd::float4x4& view)
     // voxelMesh.draw(encoder);
     battleFieldMesh.draw(encoder);
     
-    // Draw OBJ mesh
-    objMesh.draw(encoder);
+    // Draw character mesh
+    character->draw(encoder);
     
     transform = mtlm::translation({0.5f, 0.5f, 2.0f}) * mtlm::z_rotation(t) * mtlm::scale(0.1f);
     encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 1);

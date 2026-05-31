@@ -10,11 +10,12 @@
 #include "mesh_factory.h"
 #include "light_factory.h"
 #include "gen/battlefield.h"
+#include "../model/character.h"
 
 class Renderer
 {
 public:
-    Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield);
+    Renderer(MTL::Device* device, CA::MetalLayer* metalLayer, Battlefield* battlefield, Character* character);
     ~Renderer();
     void update(const simd::float4x4& view);
     
@@ -36,5 +37,6 @@ private:
     MTL::Texture* depthTexture;
     MTL::DepthStencilState* depthState;
     Battlefield* battlefield;
+    Character* character;
     float t = 0.0f;
 };

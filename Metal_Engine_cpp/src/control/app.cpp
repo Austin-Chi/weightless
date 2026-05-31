@@ -26,11 +26,11 @@ App::App()
     
     battlefield = new Battlefield(32, 32, 32);
     int* positions = battlefield->getCharacterStartPositions();
-    renderer = new Renderer(device, metalLayer, battlefield);
-
+    character = new Character();
+    character->setPosition({float(positions[0]), float(positions[1]), float(positions[2])});
+    renderer = new Renderer(device, metalLayer, battlefield, character);
     camera = new Camera();
-    camera->setPosition({float(positions[0]), float(positions[1]), float(positions[2])});
-    camera->setAngles(0.0f, 180.0f);
+    camera->followCharacter(character->getPosition(), character->getUpVector(), battlefield);
 }
 
 App::~App()
@@ -39,53 +39,34 @@ App::~App()
     delete renderer;
     delete camera;
     delete battlefield;
+    delete character;
     glfwTerminate();
 }
 
 void App::run()
 {
-    double cursorX, cursorY;
-    float dx = 0.0f, dy = 0.0f;
+    double cursorX = 0.0;
+    double cursorY = 0.0;
+    float dx = 0.0f;
+    float dy = 0.0f;
+
     while(!glfwWindowShouldClose(glfwWindow)) {
         glfwPollEvents();
 
-        simd::float3 movement = {0.0f, 0.0f, 0.0f};
-        
-        if (glfwGetKey(glfwWindow, GLFW_KEY_W) == GLFW_PRESS) {
-            movement[0] += 0.1f;
-        }
-
-        if (glfwGetKey(glfwWindow, GLFW_KEY_S) == GLFW_PRESS) {
-            movement[0] -= 0.1f;
-        }
-
-        if (glfwGetKey(glfwWindow, GLFW_KEY_A) == GLFW_PRESS) {
-            movement[1] -= 0.1f;
-        }
-
-        if (glfwGetKey(glfwWindow, GLFW_KEY_D) == GLFW_PRESS) {
-            movement[1] += 0.1f;
-        }
-
-        if (glfwGetKey(glfwWindow, GLFW_KEY_Q) == GLFW_PRESS) {
-            movement[2] -= 0.1f;
-        }
-
-        if (glfwGetKey(glfwWindow, GLFW_KEY_E) == GLFW_PRESS) {
-            movement[2] += 0.1f;
+        if (glfwGetKey(glfwWindow, GLFW_KEY_SPACE) == GLFW_PRESS) {
+            character->setMoving();
         }
 
         if (glfwGetKey(glfwWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
             glfwSetWindowShouldClose(glfwWindow, GLFW_TRUE);
         }
 
-        camera->walk(movement);
-
+        character->update(battlefield);
+        camera->followCharacter(character->getPosition(), character->getUpVector(), battlefield);
         glfwGetCursorPos(glfwWindow, &cursorX, &cursorY);
         dx = -10.0f * static_cast<float>(cursorX / 400.0 - 1.0);
         dy = -10.0f * static_cast<float>(cursorY / 300.0 - 1.0);
         glfwSetCursorPos(glfwWindow, 400.0, 300.0);
-
         camera->spin(dy, dx);
         renderer->update(camera->getViewTransform());
     }

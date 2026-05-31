@@ -112,6 +112,7 @@ Mesh MeshFactory::buildMeshFromOBJWithTexture(MTL::Device* device, const char* o
     std::vector<simd::float3> positions;
     std::vector<simd::float3> normals;
     std::vector<simd::float2> texCoords;
+    float minX = FLT_MAX, minY = FLT_MAX, minZ = FLT_MAX;
     struct FaceVertex { int positionIndex; int texCoordIndex; int normalIndex; };
     std::vector<FaceVertex> faceVertices;
 
@@ -146,16 +147,26 @@ Mesh MeshFactory::buildMeshFromOBJWithTexture(MTL::Device* device, const char* o
         std::stringstream ss(line);
         std::string cmd; ss >> cmd;
         if (cmd == "v") {
-            float x,y,z; ss >> x >> y >> z; positions.push_back(simd::make_float3(x,y,z));
+            float x,y,z; ss >> x >> y >> z; 
+            positions.push_back(simd::make_float3(x,y,z));
+            minX = std::min(minX, x); minY = std::min(minY, y); minZ = std::min(minZ, z);
         } else if (cmd == "vn") {
-            float x,y,z; ss >> x >> y >> z; normals.push_back(simd::normalize(simd::make_float3(x,y,z)));
+            float x,y,z; ss >> x >> y >> z; 
+            normals.push_back(simd::normalize(simd::make_float3(x,y,z)));
         } else if (cmd == "vt") {
-            float u,v; ss >> u >> v; texCoords.push_back(simd::make_float2(u,v));
+            float u,v; ss >> u >> v; 
+            texCoords.push_back(simd::make_float2(u,v));
         } else if (cmd == "f") {
             std::vector<std::string> faceVertexStrs; std::string fvStr;
-            while (ss >> fvStr) faceVertexStrs.push_back(fvStr);
+            while (ss >> fvStr) 
+            {
+                faceVertexStrs.push_back(fvStr);
+            }
             std::vector<FaceVertex> faceFVs; 
-            for (const auto &s: faceVertexStrs) faceFVs.push_back(parseFaceVertex(s));
+            for (const auto &s: faceVertexStrs) 
+            {
+                faceFVs.push_back(parseFaceVertex(s));
+            }
             if (faceFVs.size() == 3) {
                 faceVertices.insert(faceVertices.end(), faceFVs.begin(), faceFVs.end());
             } else if (faceFVs.size() == 4) {
@@ -197,7 +208,7 @@ Mesh MeshFactory::buildMeshFromOBJWithTexture(MTL::Device* device, const char* o
         simd::float3 pos = (fv.positionIndex>=0 && fv.positionIndex < (int)positions.size()) ? positions[fv.positionIndex] : simd::make_float3(0,0,0);
         simd::float3 normal = (fv.normalIndex>=0 && fv.normalIndex < (int)normals.size()) ? normals[fv.normalIndex] : simd::make_float3(0,0,1);
         simd::float2 tex = (fv.texCoordIndex>=0 && fv.texCoordIndex < (int)texCoords.size()) ? texCoords[fv.texCoordIndex] : simd::make_float2(0,0);
-        float data[11] = { pos[0], pos[1], pos[2], 1.0f,1.0f,1.0f, tex[0], tex[1], normal[0], normal[1], normal[2] };
+        float data[11] = { pos[0] - minX, pos[1] - minY, pos[2] - minZ, 1.0f,1.0f,1.0f, tex[0], tex[1], normal[0], normal[1], normal[2] };
         verticesOut.push_back(TexturedVertex(data));
         indicesOut.push_back((uint32_t)i);
     }

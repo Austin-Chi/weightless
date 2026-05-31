@@ -16,4 +16,5 @@ namespace mtlm
     simd::float4x4 scale(float factor);
     simd::float4x4 perspective_projection(float fovy, float aspect, float near, float far);
     simd::float4x4 view_matrix(simd::float3 right, simd::float3 up, simd::float3 forward, simd::float3 position);
+    simd::float4x4 matrix_from_basis(simd::float3 right, simd::float3 up, simd::float3 forward);
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "../config.h"
 
+class Battlefield;
+
 class Camera
 {
 public:
@@ -8,8 +10,10 @@ public:
     void setAngles(float pitch, float yaw);
     void walk(simd::float3 dPos);
     void spin(float dPitch, float dYaw);
+    void followCharacter(simd::float3 characterPosition, simd::float3 characterUp, Battlefield* battlefield);
     simd::float4x4 getViewTransform();
 private:
+    bool isOccupied(simd::float3 point, Battlefield* battlefield);
     void updateVectors();
     simd::float4 axisAngleToQuat(simd::float3 axis, float angle);
     simd::float4 quatMultiply(simd::float4 q1, simd::float4 q2);
@@ -21,4 +25,8 @@ private:
     simd::float3 right = {0.0f, -1.0f, 0.0f};
     simd::float3 up = {0.0f, 0.0f, 1.0f};
     simd::float3 forwards = {1.0f, 0.0f, 0.0f};
+
+    float followDistance = 5.0f;
+    float minimumFollowDistance = 0.5f;
+    float followShrinkStep = 0.25f;
 };

@@ -41,6 +41,16 @@ simd::float4x4 mtlm::z_rotation(float theta)
     return simd_matrix(col0, col1, col2, col3);
 }
 
+simd::float4x4 mtlm::matrix_from_basis(simd::float3 right, simd::float3 up, simd::float3 forward)
+{
+    simd_float4 col0 = {right[0], right[1], right[2], 0.0f};
+    simd_float4 col1 = {up[0], up[1], up[2], 0.0f};
+    simd_float4 col2 = {forward[0], forward[1], forward[2], 0.0f};
+    simd_float4 col3 = {0.0f, 0.0f, 0.0f, 1.0f};
+    
+    return simd_matrix(col0, col1, col2, col3);
+}
+
 simd::float4x4 mtlm::scale(float factor)
 {
     simd_float4 col0 = {factor,   0.0f,   0.0f, 0.0f};

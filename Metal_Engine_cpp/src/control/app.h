@@ -9,6 +9,7 @@
 #include "../view/renderer.h"
 #include "../model/camera.h"
 #include "../view/gen/battlefield.h"
+#include "../model/character.h"
 
 class App
 {
@@ -25,4 +26,5 @@ private:
     Renderer* renderer;
     Camera* camera;
     Battlefield* battlefield;
+    Character* character;
 };
