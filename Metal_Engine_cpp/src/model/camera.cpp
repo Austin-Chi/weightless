@@ -104,9 +104,9 @@ void Camera::followCharacter(simd::float3 characterPosition, simd::float3 charac
     };
 
     float distance = followDistance;
-    while (distance > minimumFollowDistance && !isPathClear(distance)) {
-        distance = std::max(minimumFollowDistance, distance - followShrinkStep);
-    }
+    // while (distance > minimumFollowDistance && !isPathClear(distance)) {
+    //     distance = std::max(minimumFollowDistance, distance - followShrinkStep);
+    // }
 
     position = characterPosition + followDirection * distance;
 }

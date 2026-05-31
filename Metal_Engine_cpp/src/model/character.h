@@ -25,5 +25,5 @@ private:
     int upDirection = 2; // 0: +X, 1: +Y, 2: +Z, 3: -X, 4: -Y, 5: -Z
     simd::float4x4 rotation = mtlm::identity();
     bool isMoving = false;
-    float speed = 0.1f; // units per frame
+    float speed = 0.01f; // units per frame
 };

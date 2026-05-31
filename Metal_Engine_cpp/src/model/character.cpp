@@ -83,9 +83,11 @@ void Character::update(Battlefield* battlefield)
         simd::float3 forwardVec = directionVectors[forwardDirection];
         //check if the next position in the forward direction is occupied by a block in the battlefield
         simd::float3 nextPos = position + forwardVec * speed;
-        int x = static_cast<int>(nextPos[0]);
-        int y = static_cast<int>(nextPos[1]);
-        int z = static_cast<int>(nextPos[2]);
+        simd::float3 forwardBound = {0.5f, 0.5f, 0.5f}; 
+        forwardBound += position + forwardVec * 0.5f; // check the block in front of the character's bounding box
+        int x = static_cast<int>(forwardBound[0]);
+        int y = static_cast<int>(forwardBound[1]);
+        int z = static_cast<int>(forwardBound[2]);
         if (x >= 0 && x < battlefield->getLengthX() && y >= 0 && y < battlefield->getLengthY() && z >= 0 && z < battlefield->getLengthZ()) {
             int* blockLayout = battlefield->getBlockLayout();
             if (blockLayout[x + y * battlefield->getLengthX() + z * battlefield->getLengthX() * battlefield->getLengthY()] == 0) {

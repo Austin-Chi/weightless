@@ -178,7 +178,7 @@ void Renderer::update(const simd::float4x4& view)
     simd::float4x4 perspective = mtlm::perspective_projection(45.0f, 4.0f/3.0f, 0.1f, 100.0f);
     encoder->setVertexBytes(&perspective, sizeof(simd::float4x4), 3);
     encoder->setVertexBytes(&view, sizeof(simd::float4x4), 4);
-    simd::float4x4 transform = mtlm::translation({0.0f, 0.0f, 2.0f});
+    simd::float4x4 transform = mtlm::translation({0.0f, 0.0f, 0.0f});
     encoder->setVertexBytes(&transform, sizeof(simd::float4x4), 2);
     // quadMesh.draw(encoder);
     // voxelMesh.draw(encoder);
